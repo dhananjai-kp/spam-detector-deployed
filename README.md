@@ -22,3 +22,4 @@ _**----- Important Note -----**_<br />
 ![Heroku-Error](readme_resources/application-error-heroku.png)
 # spam-detector-deployed
 # spam-detector-deployed
+# spam-detector-deployed
