@@ -1,6 +1,8 @@
 # Importing essential libraries
 from flask import Flask, render_template, request
 import pickle
+from keras.preprocessing import sequence
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
 # filename = 'model.h5'
@@ -20,8 +22,10 @@ def predict():
     if request.method == 'POST':
     	message = request.form['message']
     	data = [message]
-    	vect = token.transform(data).toarray()
-    	my_prediction = classifier.predict(vect)
+    	vect = token.transform(data)
+        sequences = tok.texts_to_sequences(vect)
+        sequences_matrix = sequence.pad_sequences(sequences)
+    	my_prediction = classifier.predict(sequences_matrix)
     	return render_template('result.html', prediction=my_prediction)
 
 if __name__ == '__main__':
