@@ -23,9 +23,9 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
     	data = [message]
-    	tok = Tokenizer(num_words=None)
-        vect = tok.fit_on_texts(data)
-        sequences = tok.texts_to_sequences(vect)
+    	token = Tokenizer(num_words=None)
+        token.fit_on_texts(data)
+        sequences = tok.texts_to_sequences(token)
         sequences_matrix = sequence.pad_sequences(sequences)
     	my_prediction = classifier.predict(sequences_matrix)
     	return render_template('result.html', prediction=my_prediction)
