@@ -22,7 +22,7 @@ def predict():
     if request.method == 'POST':
     	message = request.form['message']
     	data = [message]
-    	vect = token.transform(data)
+    	vect = token.fit_on_texts(data)
         sequences = tok.texts_to_sequences(vect)
         sequences_matrix = sequence.pad_sequences(sequences)
     	my_prediction = classifier.predict(sequences_matrix)
