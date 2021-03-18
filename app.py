@@ -5,7 +5,7 @@ import pickle
 
 # filename = 'model.h5'
 # classifier = load_model("model.h5")
-filename = 'xg-model.pkl'
+filename = 'xg_model.pkl'
 classifier = pickle.load(open(filename, 'rb'))
 token = pickle.load(open('token.pkl','rb'))
 
