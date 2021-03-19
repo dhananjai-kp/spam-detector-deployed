@@ -24,7 +24,7 @@ def predict():
         message = request.form['message']
     	data = [message]
         token.fit_on_texts(data)
-        sequences = tok.texts_to_sequences(data)
+        sequences = token.texts_to_sequences(data)
         sequences_matrix = sequence.pad_sequences(sequences,maxlen=250)
     	my_prediction = classifier.predict(sequences_matrix)
     	return render_template('result.html', prediction=my_prediction)
