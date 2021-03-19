@@ -10,7 +10,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 # classifier = load_model("model.h5")
 filename = 'xg_model.pkl'
 classifier = pickle.load(open(filename, 'rb'))
-# token = pickle.load(open('token.pkl','rb'))
+token = pickle.load(open('token.pkl','rb'))
 
 app = Flask(__name__)
 
@@ -23,8 +23,7 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
     	data = [message]
-        tok = Tokenizer(num_words=None)
-        tok.fit_on_texts(data)
+        token.fit_on_texts(data)
         sequences = tok.texts_to_sequences(data)
         sequences_matrix = sequence.pad_sequences(sequences,maxlen=250)
     	my_prediction = classifier.predict(sequences_matrix)
