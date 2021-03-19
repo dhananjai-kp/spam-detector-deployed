@@ -23,7 +23,7 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
     	data = [message]
-    	token = Tokenizer(num_words=None)
+    	token = Tokenizer(num_words=None).toarray()
         token.fit_on_texts(data)
         sequences = tok.texts_to_sequences(token)
         sequences_matrix = sequence.pad_sequences(sequences)
