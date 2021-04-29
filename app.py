@@ -40,7 +40,7 @@
 from flask import Flask, render_template, request
 import pickle
 
-# Load the Multinomial Naive Bayes model and CountVectorizer object from disk
+# Load the XGBoost model and CountVectorizer 
 filename = 'xg_model.pkl'
 classifier = pickle.load(open(filename, 'rb'))
 cv = pickle.load(open('cv-transform.pkl','rb'))
